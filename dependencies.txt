@@ -1,0 +1,5 @@
+WEMO - get ouimeaux API package
+  - pip install ouimeaux
+speech synth
+  - sudo apt-get install espeak python-espeak
+speech recog - use CMUSphynx
