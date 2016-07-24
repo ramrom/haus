@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from espeak import espeak
 import time
 

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from ouimeaux.environment import Environment
 import time
 

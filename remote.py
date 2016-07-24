@@ -4,7 +4,7 @@
 #   Date: 05APR2012
 #   Info: To send remote control commands to the Samsung tv over LAN
 #   TODO:
-
+from pdb import set_trace as bp
 import socket
 import base64
 import time, datetime
