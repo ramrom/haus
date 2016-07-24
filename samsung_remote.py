@@ -30,7 +30,8 @@ def sendKey(skey, dataSock, appstring):
 
 # Open Socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.connect((tvip, 55000))
+#sock.connect((tvip, 55000))
+sock.connect((tvip, 7676))
 
 # Key Reference
 # Normal remote keys
@@ -113,13 +114,19 @@ sock.send(part2)
 # Now send the keys as you like, e.g.,
 sendKey("KEY_VOLUP",sock,tvappstring)
 time.sleep(1)
-sendKey("KEY_TOOLS",sock,tvappstring)
+sendKey("KEY_VOLUP",sock,tvappstring)
 time.sleep(1)
-sendKey("KEY_RIGHT",sock,tvappstring)
+sendKey("KEY_VOLUP",sock,tvappstring)
 time.sleep(1)
-sendKey("KEY_DOWN",sock,tvappstring)
+sendKey("KEY_VOLUP",sock,tvappstring)
 time.sleep(1)
-sendKey("KEY_RIGHT",sock,tvappstring)
+#sendKey("KEY_TOOLS",sock,tvappstring)
+#time.sleep(1)
+#sendKey("KEY_RIGHT",sock,tvappstring)
+#time.sleep(1)
+#sendKey("KEY_DOWN",sock,tvappstring)
+#time.sleep(1)
+#sendKey("KEY_RIGHT",sock,tvappstring)
 
 # Close the socket when done
 sock.close()
