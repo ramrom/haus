@@ -4,6 +4,8 @@ speech synth
   - sudo apt-get install espeak python-espeak
 speech recog - use CMUSphynx
 spotify:
-  - mopidy (apt-get, need gpg key)
-  - mopidy-spotify (apt-get)
-  - moped (pip install Mopidy-Moped)
+  - Exagear (cost 27 bucks) x86 virtualization for spotify linux client 
+  - Mopidy
+    - mopidy (apt-get, need gpg key)
+    - mopidy-spotify (apt-get)
+    - moped (pip install Mopidy-Moped)
