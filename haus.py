@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 
 from ouimeaux.environment import Environment
 import time
@@ -9,6 +9,7 @@ def on_switch(switch):
 def on_motion(motion):
   print "Motion found!", motion.name
 
+# CLI usage: 'wemo switch "TV Room" on'
 def toggle_switch(switch):
   current_state = switch.basicevent.GetBinaryState()['BinaryState']
   new_state = '1' if current_state == '0' else '1'

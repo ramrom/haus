@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 
 # ESPEAK CODE
 #from espeak import espeak
@@ -15,8 +15,9 @@ def pspeak():
 
 from gtts import gTTS
 import os
-def gspeak():
-  tts = gTTS(text='Good morning', lang='en')
-  tts.save("good.mp3")
-  os.system("mpg321 good.mp3")
+def gspeak(phrase = 'hello'):
+  tts = gTTS(text=phrase, lang='en')
+  tts.save("phrase.mp3")
+  os.system("afplay phrase.mp3")
+  os.system("rm phrase.mp3")
 # gtts-cli.py "Hello" -l 'en' -o hello.mp3
