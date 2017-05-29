@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 def translate_command(command):
   print "you said: {0}".format(command)
 
