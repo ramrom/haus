@@ -17,7 +17,6 @@ def yweather():
     if res_json[u'query'][u'results'] == None:
       print 'no results found'
     else:
-      forecast = res_json[u'query'][u'results'][u'channel'][u'item'][u'forecast']
-      return forecast
+      return res_json[u'query'][u'results'][u'channel'] #[u'item'][u'forecast']
   else:
     print "failed to retrieve data from yahoo, status code: {0}".format(res.status_code)
