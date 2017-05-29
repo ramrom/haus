@@ -8,9 +8,9 @@
 #time.sleep(2)
 
 import pyttsx
-def pspeak():
+def pspeak(phrase = 'hello'):
   engine = pyttsx.init()
-  engine.say('Good morning.')
+  engine.say(phrase)
   engine.runAndWait()
 
 from gtts import gTTS
