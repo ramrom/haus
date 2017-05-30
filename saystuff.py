@@ -15,7 +15,6 @@ def pspeak(phrase = 'hello'):
   engine.runAndWait()
 
 from gtts import gTTS
-import os
 def gspeak(phrase = 'hello', language = 'en-uk'):
   tts = gTTS(text=phrase, lang=language)
   tts.save("phrase.mp3")
