@@ -7,4 +7,4 @@ API_KEY = f.read()
 f.close()
 
 def g_sp_recog():
-  print 'hi'  
+  print 'hi'

@@ -10,7 +10,8 @@ import base64
 import time, datetime
 
 #IP Address of TV
-tvip = "192.168.1.121"
+#tvip = "192.168.1.121"
+tvip = "192.168.1.191"
 #IP Address of TV
 myip = "100.0.0.112"
 #Used for the access control/validation, but not after that AFAIK
@@ -30,6 +31,7 @@ def sendKey(skey, dataSock, appstring):
 
 # Open Socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 #sock.connect((tvip, 55000))
 sock.connect((tvip, 7676))
 
