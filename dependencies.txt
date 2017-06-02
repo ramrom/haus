@@ -1,12 +1,13 @@
-WEMO - get ouimeaux API package
-  - pip install ouimeaux
 speech synth
   - engine 1: sudo apt-get install espeak python-espeak
   - engine 2: pip install gTTS 
 speech recog
   - CMUSphynx
-  - google ASR
+  - google cloud platform speech recog API
     - pip install google-api-python-client
+
+WEMO - get ouimeaux API package
+  - pip install ouimeaux
 spotify:
   - Exagear (cost 27 bucks) x86 virtualization for spotify linux client 
   - Mopidy
