@@ -3,7 +3,7 @@
 from ouimeaux.environment import Environment
 import time
 import sys, pdb
-import saystuff, weather
+import speech_synth, weather
 
 def on_switch(switch):
   print "Switch found!", switch.name
@@ -31,4 +31,4 @@ if __name__ == "__main__":
     #pdb.set_trace()
     r = weather.yweather()
     phrase = "the temperature is {0} degrees".format(r[u'item'][u'condition'][u'temp'])
-    saystuff.gspeak(phrase)
+    speech_synth.gspeak(phrase)

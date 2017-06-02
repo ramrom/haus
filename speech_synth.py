@@ -27,4 +27,3 @@ def gspeak(phrase = 'hello', language = 'en-uk'):
     print 'this isnt OSX' 
   os.system("rm phrase.mp3")
 # gtts-cli.py "Hello" -l 'en' -o hello.mp3
-
