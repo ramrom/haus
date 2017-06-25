@@ -28,7 +28,7 @@ if __name__ == "__main__":
     switch.blink()
     #toggle_switch(switch)
   else:
+    res = weather.yweather()
+    phrase = "the temperature is {0} degrees".format(res[u'item'][u'condition'][u'temp'])
     #pdb.set_trace()
-    r = weather.yweather()
-    phrase = "the temperature is {0} degrees".format(r[u'item'][u'condition'][u'temp'])
     speech_synth.gspeak(phrase)

@@ -6,6 +6,7 @@ import os
 #import time
 from gtts import gTTS
 import logging
+import pdb
 #
 #espeak.synth('hello world')
 #time.sleep(2)
@@ -21,9 +22,12 @@ def gspeak(phrase = 'hello', language = 'en-uk'):
   logging.info("making a call to google to grab text to speech")
   tts = gTTS(text=phrase, lang=language)
   tts.save("phrase.mp3")
+  #pdb.set_trace()
   if os.uname()[0] == 'Darwin':
     os.system("afplay phrase.mp3")
   else:
-    print 'this isnt OSX' 
+    os.system("omxplayer phrase.mp3")
+    #os.system("aplay phrase.mp3")
+    #print 'this isnt OSX'
   os.system("rm phrase.mp3")
 # gtts-cli.py "Hello" -l 'en' -o hello.mp3
