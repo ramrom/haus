@@ -6,6 +6,9 @@ speech recog
   - google cloud platform speech recog API
     - pip install google-api-python-client
 
+IR control:
+- apt-get install lirc
+
 WEMO - get ouimeaux API package
   - pip install ouimeaux
 spotify:
