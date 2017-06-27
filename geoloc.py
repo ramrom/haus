@@ -3,18 +3,28 @@ import requests
 import json
 import pdb
 
-with open('/users/smittapalli/.creds/gcloud_geoloc_key','r') as credfile:
-  API_KEY = credfile.readlines()[0][0:-1]
+def get_city_state(json_r):
+  city = json_r['results'][2]['postcode_localities']
 
-LONGLAT_URL = "https://www.googleapis.com/geolocation/v1/geolocate?key={0}".format(API_KEY)
-resp = requests.post(LONGLAT_URL)
-resp_cont = resp.json()
+def get_long_lat():
+  with open('/users/smittapalli/.creds/gcloud_geoloc_key','r') as credfile:
+    API_KEY = credfile.readlines()[0][0:-1]
 
-with open('/users/smittapalli/.creds/gcloud_geocode_key','r') as credfile:
-  API_KEY2 = credfile.readlines()[0][0:-1]
+  LONGLAT_URL = "https://www.googleapis.com/geolocation/v1/geolocate?key={0}".format(API_KEY)
+  response = requests.post(LONGLAT_URL)
+  return response.json()
 
-#pdb.set_trace()
-ADDRESS_URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng={1},{2}&key={0}".format(API_KEY2, resp_cont['location']['lat'], resp_cont['location']['lng'])
-resp2 = requests.post(ADDRESS_URL)
-#pdb.set_trace()
-print json.dumps(resp2.json(), indent=4, sort_keys=True)
+def get_human_location(longitude, latitude):
+  with open('/users/smittapalli/.creds/gcloud_geocode_key','r') as credfile:
+    API_KEY2 = credfile.readlines()[0][0:-1]
+
+  #pdb.set_trace()
+  ADDRESS_URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng={1},{2}&key={0}".format(API_KEY2, longitude, latitude)
+  response = requests.post(ADDRESS_URL)
+  return response.json()
+  #pdb.set_trace()
+
+response = get_long_lat()
+print response['location']
+#response2 = get_human_location(response['location']['lat'], response['location']['lng'])
+#print json.dumps(response2, indent=4, sort_keys=True)
