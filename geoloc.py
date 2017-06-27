@@ -1,6 +1,6 @@
 #!/usr/local/bin/python
 import requests
-import json
+import json, sys
 import pdb
 
 def get_city_state(json_r):
@@ -18,13 +18,15 @@ def get_human_location(longitude, latitude):
   with open('/users/smittapalli/.creds/gcloud_geocode_key','r') as credfile:
     API_KEY2 = credfile.readlines()[0][0:-1]
 
-  #pdb.set_trace()
   ADDRESS_URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng={1},{2}&key={0}".format(API_KEY2, longitude, latitude)
   response = requests.post(ADDRESS_URL)
   return response.json()
   #pdb.set_trace()
 
-response = get_long_lat()
-print response['location']
-#response2 = get_human_location(response['location']['lat'], response['location']['lng'])
-#print json.dumps(response2, indent=4, sort_keys=True)
+if __name__ == "__main__":
+  print "usage: 1 to print long/lat"
+  if len(sys.argv) > 1 and sys.argv[1] == '1':
+    response = get_long_lat()
+    print response['location']
+    #response2 = get_human_location(response['location']['lat'], response['location']['lng'])
+    #print json.dumps(response2, indent=4, sort_keys=True)
