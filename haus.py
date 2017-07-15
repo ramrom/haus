@@ -21,7 +21,7 @@ if __name__ == "__main__":
   if len(sys.argv) > 1 and sys.argv[1] == 'light':
     env = Environment(on_switch, on_motion)
     env.start()
-    env.discover(seconds=3)
+    env.discover(seconds=1)
     #time.sleep(2)
     #env.list_switches()
     switch = env.get_switch('ramhalolight')

@@ -1,0 +1,18 @@
+# Dependencies
+- speech synth
+    - engine 1: sudo apt-get install espeak python-espeak
+    - engine 2: pip install gTTS 
+- speech recog
+    - engine1: CMUSphynx - local non-internet package
+    - engine2: google cloud platform speech recog API
+      - pip install google-api-python-client
+- IR remote control:
+    - apt-get install lirc
+- WEMO - get ouimeaux API package
+    - pip install ouimeaux
+- spotify:
+    - Exagear (cost 27 bucks) x86 virtualization for spotify linux client 
+    - Mopidy
+      - mopidy (apt-get, need gpg key)
+      - mopidy-spotify (apt-get)
+      - moped (pip install Mopidy-Moped)
