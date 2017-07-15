@@ -6,6 +6,14 @@
     - engine1: CMUSphynx - local non-internet package
     - engine2: google cloud platform speech recog API
       - pip install google-api-python-client
+- google geoloc
+    - longlat
+      - needs api key
+    - human address
+      - needs api key
+- cta tracking
+    - need api key, 10,000 trans/day limit
+    - docs: http://www.transitchicago.com/developers/bustracker.aspx
 - IR remote control:
     - apt-get install lirc
 - WEMO - get ouimeaux API package

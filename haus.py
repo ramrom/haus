@@ -32,3 +32,10 @@ if __name__ == "__main__":
     phrase = "the temperature is {0} degrees".format(res[u'item'][u'condition'][u'temp'])
     #pdb.set_trace()
     speech_synth.gspeak(phrase)
+
+
+
+#import subprocess
+#def get_sys_out(command)
+#  proc = subprocess.Popen(command, stdout=subprocess.PIPE)
+#  return proc.stdout.read()
