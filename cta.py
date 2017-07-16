@@ -26,11 +26,12 @@ def v2(endpoint, param_string):
   URL = "http://www.ctabustracker.com/bustime/api/v2/{1}?key={0}&format=json&{2}".format(API_KEY, endpoint, param_string)
   #pdb.set_trace()
   logging.basicConfig(level=logging.INFO)
-  logging.info("API call to cta v2 for endpoint {0} with params {1}".format(endpoint, param_string))
+  logging.info("API call ctav2: endpoint {0} ,params {1}".format(endpoint, param_string))
   res = requests.get(URL)
   if res.status_code == 200:
     return res.json()
   else:
+    logging.error("API call ctav2: endpoint {0}, params {1}, ERRORED!: code {2}".format(endpoint, param_string, res.status_code))
     return "ERROR"
 
 def next_arrival(busroute, stpid):
