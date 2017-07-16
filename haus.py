@@ -31,7 +31,10 @@ if __name__ == "__main__":
     elif sys.argv[1] == 'cta':
       import cta
       res = cta.next_arrival(151, 1078)
-      phrase = "the next arrival of route 151 is {0} minutes".format(res[0])
+      if res.count("DUE") > 0:
+        phrase = "the next arrival of route 151 is due now".format(res[0])
+      else:
+        phrase = "the next arrival of route 151 is {0} minutes".format(res[0])
       speech_synth.gspeak(phrase)
   else:
     res = weather.yweather()
