@@ -4,6 +4,10 @@
 - Roomba 900
     - nodejs API: https://github.com/koalazak/dorita980
 - motorized blinds
+- drones!!
+    - fleye - drone with no blades
+      - it has an openAPI, can use openCV for computer vision
+      - it has a camera
 
 ## UI
 - webpage with tail of logs
