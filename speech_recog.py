@@ -1,7 +1,9 @@
 #!/usr/local/bin/python
+# script from: https://stackoverflow.com/questions/38703853/how-to-use-google-speech-recognition-api-in-python
+
 import pdb
 #import google-api-python-client
-from apiclient.discovery import build
+#from apiclient.discovery import build
 
 #import subprocess
 #task = subprocess.Popen("cat file.log | tail -1", shell=True, stdout=subprocess.PIPE)
@@ -16,15 +18,21 @@ with open('/users/smittapalli/.creds/gcloud_oauth','r') as credfile:
 
 import base64
 import json
+import httplib2
+
 
 from googleapiclient import discovery
-import httplib2
 from oauth2client.client import GoogleCredentials
 
 
+from apiclient.discovery import build
+from oauth2client import tools
+from oauth2client.file import Storage
+from oauth2client.client import AccessTokenRefreshError
+from oauth2client.client import OAuth2WebServerFlow
+
 DISCOVERY_URL = ('https://{api}.googleapis.com/$discovery/rest?'
                  'version={apiVersion}')
-
 
 def get_speech_service():
   credentials = GoogleCredentials.get_application_default().create_scoped(
@@ -34,7 +42,7 @@ def get_speech_service():
   return discovery.build('speech', 'v1beta1', http=http, discoveryServiceUrl=DISCOVERY_URL)
 
 
-def main(speech_file):
+def process(speech_file):
   with open(speech_file, 'rb') as speech:
     speech_content = base64.b64encode(speech.read())
 
@@ -52,3 +60,8 @@ def main(speech_file):
     })
   response = service_request.execute()
   print(json.dumps(response))
+
+if __name__ == "__main__":
+  print "usage: 1 to print long/lat"
+  #if len(sys.argv) > 1 and sys.argv[1] == '1':
+  pdb.set_trace()

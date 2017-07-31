@@ -31,3 +31,8 @@ def gspeak(phrase = 'hello', language = 'en-uk'):
     #print 'this isnt OSX'
   os.system("rm phrase.mp3")
 # gtts-cli.py "Hello" -l 'en' -o hello.mp3
+
+if __name__ == "__main__":
+  print 'debug console'
+  #if len(sys.argv) > 1 and sys.argv[1] == '1':
+  pdb.set_trace()

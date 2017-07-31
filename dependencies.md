@@ -1,7 +1,8 @@
 # Dependencies
 - speech synth
     - engine 1: sudo apt-get install espeak python-espeak
-    - engine 2: pip install gTTS 
+      - package pyttsx (needs Foundation?)
+    - engine 2: pip install gTTS (google)
 - speech recog
     - engine1: CMUSphynx - local non-internet package
     - engine2: google cloud platform speech recog API

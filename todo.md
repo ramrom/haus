@@ -1,6 +1,6 @@
 # Todo
 
-## Things to control
+## Things to sense and control
 - Roomba 900
     - nodejs API: https://github.com/koalazak/dorita980
 - motorized blinds
@@ -8,6 +8,13 @@
     - fleye - drone with no blades
       - it has an openAPI, can use openCV for computer vision
       - it has a camera
+- bluetooth LE (low energy) sensors
+- temp/humidity sensors
+- find open source API tag (used to like find keys)
+- wall socket power consumption monitor
+- webcam security
+  - detect faces and people
+- led ticker tape
 
 ## UI
 - webpage with tail of logs
