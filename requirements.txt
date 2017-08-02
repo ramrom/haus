@@ -1,0 +1,13 @@
+# Haus requirement file
+
+# awesome http client
+requests
+
+# Wemo api
+ouimeaux
+
+# google cloud text to speech
+gtts
+
+# google cloud speech recog
+google-api-python-client
