@@ -16,12 +16,16 @@ if __name__ == "__main__":
       else:
         phrase = "the next arrival of route 151 is {0} minutes".format(res[0])
       speech_synth.gspeak(phrase)
+    elif sys.argv[1] == 'weather':
+      import weather
+      res = weather.yweather()
+      phrase = "the temperature is {0} degrees".format(res[u'item'][u'condition'][u'temp'])
+      #pdb.set_trace()
+      speech_synth.gspeak(phrase)
   else:
-    import weather
-    res = weather.yweather()
-    phrase = "the temperature is {0} degrees".format(res[u'item'][u'condition'][u'temp'])
-    #pdb.set_trace()
-    speech_synth.gspeak(phrase)
+    print 'starting debugging console'
+    pdb.set_trace()
+
 
 
 
