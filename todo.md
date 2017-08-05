@@ -15,6 +15,7 @@
 - webcam security
   - detect faces and people
 - led ticker tape
+- control python netgear app - https://github.com/balloob/pynetgear
 
 ## UI
 - webpage with tail of logs
