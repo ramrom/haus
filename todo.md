@@ -9,8 +9,10 @@
       - it has an openAPI, can use openCV for computer vision
       - it has a camera
 - bluetooth LE (low energy) sensors
-- temp/humidity sensors
 - find open source API tag (used to like find keys)
+  - start with the key finder tiles, (there are many, find one with good API)
+    - Tile: e.g. https://community.home-assistant.io/t/bluetoothle-tile-detect-on-raspberry-pi/10130/2
+- temp/humidity sensors
 - wall socket power consumption monitor
 - webcam security
   - detect faces and people

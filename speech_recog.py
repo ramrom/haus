@@ -77,14 +77,14 @@ def methodB():
     request = service.events().list(calendarId='primary')
 
     while request != None:
-    response = request.execute()
+      response = request.execute()
 
-    for event in response.get('items', []):
-      # The event object is a dict object with a 'summary' key.
-      print repr(event.get('summary', 'NO SUMMARY')) + '\n'
-    # Get the next request object by passing the previous request object to
-    # the list_next method.
-    request = service.events().list_next(request, response)
+      for event in response.get('items', []):
+        # The event object is a dict object with a 'summary' key.
+        print repr(event.get('summary', 'NO SUMMARY')) + '\n'
+      # Get the next request object by passing the previous request object to
+      # the list_next method.
+      request = service.events().list_next(request, response)
 
   except AccessTokenRefreshError:
     # The AccessTokenRefreshError exception is raised if the credentials
