@@ -9,11 +9,6 @@ import pdb
 #task = subprocess.Popen("cat file.log | tail -1", shell=True, stdout=subprocess.PIPE)
 #data = task.stdout.read()
 
-with open('/users/smittapalli/.creds/gcloud_oauth','r') as credfile:
-  OAUTH = credfile.readlines()
-  OAUTH_CLIENT_ID = OAUTH[0][0:-1]
-  OAUTH_SECRET = OAUTH[1][0:-1]
-
 def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
   import base64
   import requests
@@ -53,6 +48,11 @@ def oauth(speech_file_path = '../Documents/test_recording.flac'):
   from oauth2client.file import Storage
   from oauth2client.client import AccessTokenRefreshError
   from oauth2client.client import OAuth2WebServerFlow
+
+  with open('/users/smittapalli/.creds/gcloud_oauth','r') as credfile:
+    OAUTH = credfile.readlines()
+    OAUTH_CLIENT_ID = OAUTH[0][0:-1]
+    OAUTH_SECRET = OAUTH[1][0:-1]
 
   scope = 'https://speech.googleapis.com/v1/speech:recognize'
   flow = OAuth2WebServerFlow(OAUTH_CLIENT_ID, OAUTH_SECRET, scope)
