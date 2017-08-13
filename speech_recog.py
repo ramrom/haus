@@ -4,10 +4,7 @@
 # forming a request: https://cloud.google.com/speech/docs/sync-recognize#speech-sync-recognize-protocol
 # - google speech requires mono channel audio
 
-import pdb
-#import subprocess
-#task = subprocess.Popen("cat file.log | tail -1", shell=True, stdout=subprocess.PIPE)
-#data = task.stdout.read()
+import pdb, logging, time
 
 def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
   import base64
@@ -18,8 +15,13 @@ def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
 
   URL = 'https://speech.googleapis.com/v1/speech:recognize?key={0}'.format(API_KEY)
 
+  start = time.time()
   with open(speech_file_path, 'rb') as speech:
     speech_content = base64.b64encode(speech.read())
+
+  logging.basicConfig(level=logging.INFO)
+  logging.info("opened and encoded {0}, duration: {1}".format(speech_file_path, time.time() - start))
+  start = time.time()
 
   if body == None:
     body={
@@ -34,8 +36,8 @@ def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
         }
       }
 
-  #pdb.set_trace()
   response = requests.post(URL, json = body) 
+  logging.info("POST request to google speech api done, duration: {0}".format(time.time() - start))
   res = response.json()
   # res['results'][0]['alternatives'][0]['transcript']  # the actual translation
   # res['results'][0]['alternatives'][0]['confidence']  # confidence level of accuracy

@@ -3,6 +3,10 @@ import time
 import sys, pdb
 import speech_synth
 
+#import subprocess
+#task = subprocess.Popen("cat file.log | tail -1", shell=True, stdout=subprocess.PIPE)
+#data = task.stdout.read()
+
 if __name__ == "__main__":
   if len(sys.argv) > 1:
     if sys.argv[1] == 'light':
