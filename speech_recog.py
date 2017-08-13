@@ -25,8 +25,6 @@ def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
   with open(speech_file_path, 'rb') as speech:
     speech_content = base64.b64encode(speech.read())
 
-  speech_content2 = "/9j/7QBEUGhvdG9zaG9...base64-encoded-audio-content...fXNWzvDEeYxxxzj/Coa6Bax//Z"
-
   if body == None:
     body={
       'config': {
@@ -36,7 +34,7 @@ def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
       },
       'audio': {
         #'content': speech_content.decode('UTF-8')
-        'content': speech_content
+        'content': speech_content2
         }
       }
 
