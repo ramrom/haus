@@ -1,6 +1,7 @@
 #!/usr/local/bin/python
 
 # NOTES:
+# forming a request: https://cloud.google.com/speech/docs/sync-recognize#speech-sync-recognize-protocol
 # - google speech requires mono channel audio
 
 import pdb
@@ -34,15 +35,15 @@ def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
       },
       'audio': {
         #'content': speech_content.decode('UTF-8')
-        'content': speech_content2
+        'content': speech_content
         }
       }
 
   #pdb.set_trace()
   response = requests.post(URL, json = body) 
   res = response.json()
-  # res['results'][0]['alternatives'][0]['transcript']
-  # res['results'][0]['alternatives'][0]['confidence']
+  # res['results'][0]['alternatives'][0]['transcript']  # the actual translation
+  # res['results'][0]['alternatives'][0]['confidence']  # confidence level of accuracy
   return res
 
 def oauth(speech_file_path = '../Documents/test_recording.flac'):
