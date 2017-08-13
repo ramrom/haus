@@ -13,7 +13,7 @@ def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
   import base64
   import requests
 
-  with open('/users/smittapalli/.creds/gcloud_geoloc_key','r') as credfile:
+  with open('/users/smittapalli/.creds/gcloud_base_api_key','r') as credfile:
     API_KEY = credfile.readlines()[0][0:-1]
 
   URL = 'https://speech.googleapis.com/v1/speech:recognize?key={0}'.format(API_KEY)

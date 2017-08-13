@@ -8,7 +8,7 @@ def get_city_state(json_r):
   city = json_r['results'][2]['postcode_localities']
 
 def long_lat():
-  with open('/users/smittapalli/.creds/gcloud_geoloc_key','r') as credfile:
+  with open('/users/smittapalli/.creds/gcloud_base_api_key','r') as credfile:
     API_KEY = credfile.readlines()[0][0:-1]
 
   LONGLAT_URL = "https://www.googleapis.com/geolocation/v1/geolocate?key={0}".format(API_KEY)
@@ -19,7 +19,7 @@ def long_lat():
   return response.json()
 
 def human_location(longitude, latitude):
-  with open('/users/smittapalli/.creds/gcloud_geocode_key','r') as credfile:
+  with open('/users/smittapalli/.creds/gcloud_base_api_key','r') as credfile:
     API_KEY2 = credfile.readlines()[0][0:-1]
 
   ADDRESS_URL = "https://maps.googleapis.com/maps/api/geocode/json?latlng={1},{2}&key={0}".format(API_KEY2, longitude, latitude)
