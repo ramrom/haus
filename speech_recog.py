@@ -1,5 +1,7 @@
 #!/usr/local/bin/python
-# script from: https://stackoverflow.com/questions/38703853/how-to-use-google-speech-recognition-api-in-python
+
+# NOTES:
+# - google speech requires mono channel audio
 
 import pdb
 #import subprocess
@@ -11,54 +13,50 @@ with open('/users/smittapalli/.creds/gcloud_oauth','r') as credfile:
   OAUTH_CLIENT_ID = OAUTH[0][0:-1]
   OAUTH_SECRET = OAUTH[1][0:-1]
 
-#pdb.set_trace()
-
-DISCOVERY_URL = ('https://{api}.googleapis.com/$discovery/rest?'
-                 'version={apiVersion}')
-
-def get_speech_service():
-  from oauth2client.client import GoogleCredentials
-
-  credentials = GoogleCredentials.get_application_default().create_scoped(
-      ['https://www.googleapis.com/auth/cloud-platform'])
-  http = httplib2.Http()
-  credentials.authorize(http)
-  return discovery.build('speech', 'v1beta1', http=http, discoveryServiceUrl=DISCOVERY_URL)
-
-def methodA(speech_file):
+def apikey(speech_file_path = '../Documents/test_recording.flac', body = None):
   import base64
-  import json
-  import httplib2
+  import requests
 
-  from googleapiclient import discovery
+  with open('/users/smittapalli/.creds/gcloud_geoloc_key','r') as credfile:
+    API_KEY = credfile.readlines()[0][0:-1]
 
-  with open(speech_file, 'rb') as speech:
+  URL = 'https://speech.googleapis.com/v1/speech:recognize?key={0}'.format(API_KEY)
+
+  with open(speech_file_path, 'rb') as speech:
     speech_content = base64.b64encode(speech.read())
 
-  service = get_speech_service()
-  service_request = service.speech().syncrecognize(
+  speech_content2 = "/9j/7QBEUGhvdG9zaG9...base64-encoded-audio-content...fXNWzvDEeYxxxzj/Coa6Bax//Z"
+
+  if body == None:
     body={
       'config': {
-        'encoding': 'LINEAR16',  # raw 16-bit signed LE samples
-        'sampleRate': 16000,  # 16 khz
-        'languageCode': 'en-US',  # a BCP-47 language tag
+        #'encoding': 'LINEAR16',  # raw 16-bit signed LE samples
+        #'sampleRate': 16000,  # 16 khz
+        'languageCode': 'en-US'  # a BCP-47 language tag
       },
-    'audio': {
-      'content': speech_content.decode('UTF-8')
+      'audio': {
+        #'content': speech_content.decode('UTF-8')
+        'content': speech_content
+        }
       }
-    })
-  response = service_request.execute()
-  print(json.dumps(response))
 
-def methodB():
+  #pdb.set_trace()
+  response = requests.post(URL, json = body) 
+  res = response.json()
+  # res['results'][0]['alternatives'][0]['transcript']
+  # res['results'][0]['alternatives'][0]['confidence']
+  return res
+
+def oauth(speech_file_path = '../Documents/test_recording.flac'):
+  import base64
   from apiclient.discovery import build
   from oauth2client import tools
   from oauth2client.file import Storage
   from oauth2client.client import AccessTokenRefreshError
   from oauth2client.client import OAuth2WebServerFlow
 
-  scope = 'https://www.googleapis.com/auth/calendar'
-  flow = OAuth2WebServerFlow(client_id, client_secret, scope)
+  scope = 'https://speech.googleapis.com/v1/speech:recognize'
+  flow = OAuth2WebServerFlow(OAUTH_CLIENT_ID, OAUTH_SECRET, scope)
 
   storage = Storage('credentials.dat')
   credentials = storage.get()
@@ -71,28 +69,15 @@ def methodB():
   http = httplib2.Http()
   http = credentials.authorize(http)
 
-  service = build('calendar', 'v3', http=http)
+  service = build('speech', 'v1', http=http)
 
-  try:
-    request = service.events().list(calendarId='primary')
+  with open(speech_file_path, 'rb') as speech:
+    speech_content = base64.b64encode(speech.read())
 
-    while request != None:
-      response = request.execute()
+  request = service.speech().syncrecognize(
+    body={ 'config': { 'languageCode': 'en-US', }, 'audio': { 'content': speech_content } })
 
-      for event in response.get('items', []):
-        # The event object is a dict object with a 'summary' key.
-        print repr(event.get('summary', 'NO SUMMARY')) + '\n'
-      # Get the next request object by passing the previous request object to
-      # the list_next method.
-      request = service.events().list_next(request, response)
-
-  except AccessTokenRefreshError:
-    # The AccessTokenRefreshError exception is raised if the credentials
-    # have been revoked by the user or they have expired.
-    print ('The credentials have been revoked or expired, please re-run' 'the application to re-authorize')
-
+  response = request.execute()
 
 if __name__ == "__main__":
-  print "usage: 1 to print long/lat"
-  #if len(sys.argv) > 1 and sys.argv[1] == '1':
   pdb.set_trace()

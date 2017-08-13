@@ -9,6 +9,8 @@
       - it has an openAPI, can use openCV for computer vision
       - it has a camera
 - bluetooth LE (low energy) sensors
+  - get pybluez library to work, "pip install pybluez" fails, get gcc error
+    - there is a open github issue with the failure (and a comment for a potential permanent fix)
 - find open source API tag (used to like find keys)
   - start with the key finder tiles, (there are many, find one with good API)
     - Tile: e.g. https://community.home-assistant.io/t/bluetoothle-tile-detect-on-raspberry-pi/10130/2
@@ -19,8 +21,12 @@
 - led ticker tape
 - control python netgear app - https://github.com/balloob/pynetgear
 
-## UI
+## Interfaces
 - webpage with tail of logs
     - logs colorize every API call
     - logs of healthchecks of system and internet connectivity
 - for a big TV with webpage, get the attachable touchscreen for a full screen touchable interface!
+- good microphone
+  - hack amazon alexa or google home for it's mic
+- wearable ring
+  - gesture control
