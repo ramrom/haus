@@ -9,8 +9,9 @@
       - it has an openAPI, can use openCV for computer vision
       - it has a camera
 - bluetooth LE (low energy) sensors
-  - get pybluez library to work, "pip install pybluez" fails, get gcc error
+  - OSX: get pybluez library to work, "pip install pybluez" fails, get gcc error
     - there is a open github issue with the failure (and a comment for a potential permanent fix)
+  - for linux need a libbluetooth-dev package
 - find open source API tag (used to like find keys)
   - start with the key finder tiles, (there are many, find one with good API)
     - Tile: e.g. https://community.home-assistant.io/t/bluetoothle-tile-detect-on-raspberry-pi/10130/2

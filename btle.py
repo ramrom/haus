@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # NOTE: 
 # For pi 3 (on ubuntumate) for python 2.7 to install pybluez package
-# sudo apt-get install libbluetooth-dev
+# sudo apt-get install libbluetooth-dev (aka BlueZ, the official linux bluetooth protocol stack)
 # sudo pip install pybluez 
 
 import pdb
