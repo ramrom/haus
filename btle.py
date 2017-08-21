@@ -16,7 +16,7 @@ def bt_devs():
     print("  %s - %s" % (addr, name))
 
 # bluetooth low energy scan
-  def btle_devs():
+def btle_devs():
   from bluetooth.ble import DiscoveryService
   
   service = DiscoveryService()
