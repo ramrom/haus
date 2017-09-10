@@ -1,6 +1,6 @@
 # Todo
 
-## Things to sense and control
+## Sensors and things to control
 - Roomba 900
     - nodejs API: https://github.com/koalazak/dorita980
 - motorized blinds
@@ -22,8 +22,9 @@
   - detect faces and people
 - led ticker tape
 - control python netgear app - https://github.com/balloob/pynetgear
+- spotipy - python library for spotify, check it out
 
-## Interfaces
+## User Interfaces
 - wearable ring
   - gesture control
 - webpage with tail of logs
