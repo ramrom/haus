@@ -12,6 +12,13 @@ def yweather():
   city = 'chicago'
   state = 'il'
   url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22{0}%2C%20{1}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys".format(city, state)
+
+
+  #query = "select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text=\"({lat},{lon})\")".format(longitude, lat)
+  #url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22{0}%2C%20{1}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys".format(41.92, -87.64)
+
+  #url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.placefinder%20where%20text%3D%2239.0618491343%2C-96.5917968750%22%20and%20gflags%20%3D%20%22R%22)%20and%20u=%22c%22&format=json&diagnostics=true&callback="
+
   res = requests.get(url)
   if res.status_code == 200:
     res_json = res.json()

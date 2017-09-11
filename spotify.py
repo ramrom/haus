@@ -1,5 +1,5 @@
 #!/usr/local/bin/python
-# goto developer.spotify.com to create client id and secret
+# goto developer.spotify.com to create client id, secret, and redirect URI
 
 #import pdb
 #
@@ -14,15 +14,14 @@ def get_creds():
 
 # shows a user's playlists (need to be authenticated via oauth)
 
-import sys
+import sys, pdb
 import spotipy
 import spotipy.util as util
 
 def show_tracks(tracks):
     for i, item in enumerate(tracks['items']):
         track = item['track']
-        print "   %d %32.32s %s" % (i, track['artists'][0]['name'],
-            track['name'])
+        print "   %d %32.32s %s" % (i, track['artists'][0]['name'], track['name'])
 
 
 if __name__ == '__main__':
@@ -34,8 +33,15 @@ if __name__ == '__main__':
         sys.exit()
 
     creds = get_creds()
-    token = util.prompt_for_user_token('ramrom23', client_id=creds['client_id'],
-                client_secret=creds['client_secret'], redirect_uri='http://www.google.com')
+    dascope = 'user-library-read'
+    #pdb.set_trace()
+    try:
+      token = util.prompt_for_user_token('ramrom23', client_id=creds['client_id'], scope=dascope,
+                  client_secret=creds['client_secret'], redirect_uri='http://github.com/ramrom')
+                  #client_secret='blah', redirect_uri='http://github.com/ramrom')
+    except spotipy.oauth2.SpotifyOauthError:
+      print 'Oauth error!'
+      sys.exit(1)
 
     if token:
         sp = spotipy.Spotify(auth=token)
