@@ -1,7 +1,6 @@
 #!/usr/local/bin/python
 # goto developer.spotify.com to create client id, secret, and redirect URI
 
-
 import sys, pdb
 import spotipy
 import spotipy.util as util
@@ -28,16 +27,20 @@ def show_tracks(tracks):
         track = item['track']
         print "   %d %32.32s %s" % (i, track['artists'][0]['name'], track['name'])
 
+def print_pl_name_and_owner(playlists):
+  for pl in playlists:
+    print pl['name'], pl['owner']['id']
+
 def print_users_playlists(username, token):
   sp = spotipy.Spotify(auth=token)
   playlists = sp.user_playlists(username)
+  #pdb.set_trace()
   for playlist in playlists['items']:
     if playlist['owner']['id'] == username:
       print
       print playlist['name']
       print '  total tracks', playlist['tracks']['total']
-      results = sp.user_playlist(username, playlist['id'],
-        fields="tracks,next")
+      results = sp.user_playlist(username, playlist['id'], fields="tracks,next")
       tracks = results['tracks']
       show_tracks(tracks)
       while tracks['next']:
