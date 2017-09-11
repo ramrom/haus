@@ -1,10 +1,16 @@
 #!/usr/local/bin/python
+# goto developer.spotify.com to create client id and secret
+
 #import pdb
 #
 #if __name__ == '__main__':
 #  pdb.set_trace()
 #  #main()
 
+def get_creds():
+  with open('/users/smittapalli/.creds/spotify','r') as credfile:
+    lines = credfile.readlines()
+    return { 'client_id': lines[0][0:-1], 'client_secret': lines[1][0:-1] }
 
 # shows a user's playlists (need to be authenticated via oauth)
 
@@ -27,7 +33,9 @@ if __name__ == '__main__':
         print "usage: python user_playlists.py [username]"
         sys.exit()
 
-    token = util.prompt_for_user_token(username)
+    creds = get_creds()
+    token = util.prompt_for_user_token('ramrom23', client_id=creds['client_id'],
+                client_secret=creds['client_secret'], redirect_uri='http://www.google.com')
 
     if token:
         sp = spotipy.Spotify(auth=token)
