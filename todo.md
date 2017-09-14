@@ -25,8 +25,9 @@
 - spotipy - python library for spotify, check it out
 
 ## User Interfaces
-- wearable ring
-  - gesture control
+- wearable ring for gesture control
+  - decent review: https://www.wareable.com/smart-jewellery/best-smart-rings-1340
+  - nod ring (i dont see it here directly, not sure still sold): https://nod.com/
 - webpage with tail of logs
     - logs colorize every API call
     - logs of healthchecks of system and internet connectivity
