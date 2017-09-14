@@ -15,6 +15,9 @@ def bt_devs():
   for addr, name in nearby_devices:
     print("  %s - %s" % (addr, name))
 
+# TODO: i sometimes get this, fix it:
+#   "*** OSError: [Errno 19] No such device"
+
 # bluetooth low energy scan
 # fails with "gattlib not found"
 #   - "pip install gattlib" fails b/c glib-2.0 not found
@@ -28,15 +31,28 @@ def bt_devs():
 # 
 # also see https://home-assistant.io/components/device_tracker.bluetooth_le_tracker/
 
+# Flower care, address: C4:7C:8D:62:DE:8B
 def btle_devs():
   from bluetooth.ble import DiscoveryService
   
   service = DiscoveryService()
-  devices = service.discover(2)
+  devices = service.discover(4)
+  return devices
+
+def btle_scan():
+  from bluetooth.ble import BeaconService
+
+  service = BeaconService()
+  devices = service.scan(4)
+  return devices
   
+  #for address, data in list(devices.items()):
+  #  b = Beacon(data, address)
+  #  print(b)
+
+def print_btle_devs(devices):
   for address, name in devices.items():
     print("name: {}, address: {}".format(name, address))
 
 if __name__ == '__main__':
   pdb.set_trace()
-  #main()
