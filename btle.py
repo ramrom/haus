@@ -56,3 +56,11 @@ def print_btle_devs(devices):
 
 if __name__ == '__main__':
   pdb.set_trace()
+
+# TODO: check these out:
+# - bleep - updated 2 years ago
+#   - OSX yells "Could not find a version that satisfies the requirement pyxpcconnection (from pygattosx->bleep) (from versions: )" on install
+# - https://github.com/ukBaz/python-bluezero - BLE, updated on 9/8/17 - very recent!
+#   - 0.0.5 installed successfully on OSX!, need to test
+# - PyBLEWrapper
+#   - 0.2.6 installed successfully on OSX!, need to test
