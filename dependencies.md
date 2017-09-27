@@ -20,8 +20,12 @@
 - WEMO - get ouimeaux API package
     - pip install ouimeaux
 - spotify:
-    - Exagear (cost 27 bucks) x86 virtualization for spotify linux client 
-    - Mopidy
-      - mopidy (apt-get, need gpg key)
-      - mopidy-spotify (apt-get)
-      - moped (pip install Mopidy-Moped)
+    - REST API: pip install spotipy
+    - native client for ARM/linux
+      - Exagear (cost 27 bucks) x86 virtualization for spotify linux client 
+      - Mopidy
+        - mopidy (apt-get, need gpg key)
+        - mopidy-spotify (apt-get)
+        - moped (pip install Mopidy-Moped)
+- BLE
+    - complicated, see btle.py
