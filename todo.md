@@ -28,15 +28,14 @@
 - wearable ring for gesture control
   - decent review: https://www.wareable.com/smart-jewellery/best-smart-rings-1340
   - nod ring (i dont see it here directly, not sure still sold): https://nod.com/
+- good microphone
+  - hack amazon alexa or google home for it's mic
 - webpage with tail of logs
     - logs colorize every API call
     - logs of healthchecks of system and internet connectivity
-- for a big TV with webpage, get the attachable touchscreen for a full screen touchable interface!
-- good microphone
-  - hack amazon alexa or google home for it's mic
 - Heyo - 3d maps the room and turns anything into a button/interface
-- Taodo - a small touchpad on a wristband with fingerprint recog that can use orientation and position of finger
 - tap strap - wear over ur 4 fingers to make virtual keyboard out of anything
+- Taodo ?? - a small touchpad on a wristband with fingerprint recog that can use orientation and position of finger
 - turn a big tv (like 60""+) into a touch screen: 
   - http://tabler.tv/
     - this is a big glass screen put over the tv
