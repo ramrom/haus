@@ -5,9 +5,14 @@ from flask import Flask, request
 app = Flask(__name__)
 
 @app.route("/")
+def status():
+  return 'hello world'
+
+@app.route("/run")
 def run():
   action = request.args.get('act','')
-  if action == 'light'
+  if action == 'light':
     os.system('python ~/haus/haus.py light')
-  end
-  return 'hello world'
+    return 'lights toggled'
+  else:
+    return 'unknown action'
