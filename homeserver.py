@@ -1,4 +1,4 @@
-# To run: FLASK_APP=homeserver.py flask run -p 8080 --host=192.168.1.102
+# To run: FLASK_APP=homeserver.py flask run -p 1111 --host=1.1.1.1
 
 import os
 from flask import Flask, request
@@ -7,5 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def run():
   action = request.args.get('act','')
-  os.system('python ~/haus/haus.py light')
+  if action == 'light'
+    os.system('python ~/haus/haus.py light')
+  end
   return 'hello world'
