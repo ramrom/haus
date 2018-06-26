@@ -29,3 +29,8 @@
         - moped (pip install Mopidy-Moped)
 - BLE
     - complicated, see btle.py
+
+- miplant
+  - pip miplant (0.3.0)
+- tile tracking
+  - pip pytile (1.1.0)
