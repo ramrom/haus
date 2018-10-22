@@ -7,7 +7,7 @@ import spotipy
 import spotipy.util as util
 
 def get_creds():
-  with open('/users/smittapalli/.creds/spotify_api','r') as credfile:
+  with open('/users/smittapalli/.creds/spotify_api.json','r') as credfile:
     return json.loads(credfile.read())
 
 def auth_flow(user_scope):
