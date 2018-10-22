@@ -1,14 +1,14 @@
 #!/usr/local/bin/python
 # goto developer.spotify.com to create client id, secret, and redirect URI
 
+import json
 import sys, pdb
 import spotipy
 import spotipy.util as util
 
 def get_creds():
-  with open('/users/smittapalli/.creds/spotify','r') as credfile:
-    lines = credfile.readlines()
-    return { 'client_id': lines[0][0:-1], 'client_secret': lines[1][0:-1] }
+  with open('/users/smittapalli/.creds/spotify_api','r') as credfile:
+    return json.loads(credfile.read())
 
 def auth_flow(user_scope):
   creds = get_creds()
@@ -17,7 +17,7 @@ def auth_flow(user_scope):
                 client_secret=creds['client_secret'], redirect_uri='http://github.com/ramrom')
                 #client_secret='blah', redirect_uri='http://github.com/ramrom')
   except spotipy.oauth2.SpotifyOauthError:
-    print 'Oauth error!'
+    print('Oauth error!')
     sys.exit(1)
   return token
 
@@ -25,11 +25,11 @@ def auth_flow(user_scope):
 def show_tracks(tracks):
     for i, item in enumerate(tracks['items']):
         track = item['track']
-        print "   %d %32.32s %s" % (i, track['artists'][0]['name'], track['name'])
+        print("   %d %32.32s %s" % (i, track['artists'][0]['name'], track['name']))
 
 def print_pl_name_and_owner(playlists):
   for pl in playlists:
-    print pl['name'], pl['owner']['id']
+    print(pl['name'], pl['owner']['id'])
 
 def print_users_playlists(username, token):
   sp = spotipy.Spotify(auth=token)
@@ -37,9 +37,9 @@ def print_users_playlists(username, token):
   #pdb.set_trace()
   for playlist in playlists['items']:
     if playlist['owner']['id'] == username:
-      print
-      print playlist['name']
-      print '  total tracks', playlist['tracks']['total']
+      print("")
+      print(playlist['name'])
+      print('  total tracks', playlist['tracks']['total'])
       results = sp.user_playlist(username, playlist['id'], fields="tracks,next")
       tracks = results['tracks']
       show_tracks(tracks)
